@@ -1,0 +1,1 @@
+web: gunicorn toheroku.wsgi --log-file -
