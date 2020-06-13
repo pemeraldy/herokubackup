@@ -127,7 +127,7 @@ if os.getcwd() == '/app':
     DATABASES['default'].update(db_from_env)
     SECURE_PROXY_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    ALLOWED_HOSTS = ['yopeemasterone.herokuapp.com']
+    ALLOWED_HOSTS = ['stockmasterthree.herokuapp.com']
     DEBUG = True
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.abspath(__file__))) 
