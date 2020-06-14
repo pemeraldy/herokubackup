@@ -21,3 +21,5 @@ class Product(models.Model):
     reoder_level = models.IntegerField(null=True)
     def __str__(self):
         return self.name
+
+
