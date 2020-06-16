@@ -1,12 +1,12 @@
-{% extends 'inventory/base.html' %}
-<!--  -->
-{% block content %}
-<!--  -->
-
+{% extends 'inventory/base.html' %} {% block content %}
+<!-- side nav -->
 {% include 'inventory/sidenav.html' %}
+
 <div class="main-content" id="panel">
+  <!-- top nav -->
   {% include 'inventory/nav.html' %}
   <div class="container-fluid">
+    <!-- statistic board -->
     <div class="row mt-4">
       <!-- Card statistic boards -->
       <div class="col-xl-3 col-md-6">
@@ -16,9 +16,9 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">
-                  Total Orders
+                  Available Products
                 </h5>
-                <span class="h2 font-weight-bold mb-0"></span>
+                <span class="h2 font-weight-bold mb-0">{{available}}</span>
               </div>
               <div class="col-auto">
                 <div
@@ -39,13 +39,13 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">
-                  Total Pending
+                  Incoming Products
                 </h5>
-                <span class="h2 font-weight-bold mb-0"></span>
+                <span class="h2 font-weight-bold mb-0">{{incoming}}</span>
               </div>
               <div class="col-auto">
                 <div
-                  class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
+                  class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"
                 >
                   <i class="ni ni-chart-bar-32"></i>
                 </div>
@@ -62,13 +62,13 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">
-                  Total Delivered
+                  Outgoing Products
                 </h5>
-                <span class="h2 font-weight-bold mb-0"></span>
+                <span class="h2 font-weight-bold mb-0">{{outgoing}}</span>
               </div>
               <div class="col-auto">
                 <div
-                  class="icon icon-shape bg-gradient-green text-white rounded-circle shadow"
+                  class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow"
                 >
                   <i class="ni ni-chart-bar-32"></i>
                 </div>
@@ -79,9 +79,9 @@
       </div>
     </div>
 
-    <!-- product and order -->
-    <div class="row">
-      <div class="col-xl-8">
+    <!-- products -->
+    <div class="row pt-4">
+      <div class="col-xl-12">
         <div class="card">
           <div class="card-header border-0">
             <div class="row align-items-center">
@@ -102,71 +102,42 @@
                   <th scope="col">price</th>
                   <th scope="col">Status</th>
                   <th scope="col">Quantity</th>
+                  <th scope="col">Vendor</th>
+                  <th scope="col">Date created</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Remove</th>
                 </tr>
               </thead>
               <tbody>
-                <!-- {% for i in products %} -->
+                {% for i in products %}
                 <tr>
                   <th scope="row">
-                    Juice Box
+                    {{i.name}}
                   </th>
+                  <td>{{i.price}}</td>
                   <td>
-                    75
+                    {{i.category}}
                   </td>
                   <td>
                     <i class="fas fa-arrow-up text-success mr-3"></i>
-                    Pending
+                    {{i.quantity}}
                   </td>
                   <td>
-                    8
+                    <i class="fas fa-arrow-up text-success mr-3"></i>
+                    {{i.vendor}}
+                  </td>
+                  <td>
+                    <i class="fas fa-arrow-up text-success mr-3"></i>
+                    {{i.date}}
+                  </td>
+                  <td>
+                    <a href="" class="btn btn-sm btn-info">Edit</a>
+                  </td>
+                  <td>
+                    <a href="#" class="btn btn-sm btn-danger">Remove</a>
                   </td>
                 </tr>
-                <!-- {% endfor %} -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="card">
-          <div class="card-header border-0">
-            <div class="row align-items-center">
-              <div class="col">
-                <h3 class="mb-0">Orders</h3>
-              </div>
-              <div class="col text-right">
-                <a href="#!" class="btn btn-sm btn-primary">Add orders</a>
-              </div>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <!-- Projects table -->
-            <table class="table align-items-center table-flush">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Customer</th>
-                  <th scope="col">Product</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- {% for i in orders %} -->
-                <tr>
-                  <th scope="row">
-                    Amina
-                  </th>
-                  <td>
-                    dell
-                  </td>
-                  <td>
-                    4
-                  </td>
-                  <td>
-                    <div class="btn btn-sm btn-warning"></div>
-                  </td>
-                </tr>
-                <!-- {% endfor %} -->
+                {% endfor %}
               </tbody>
             </table>
           </div>
@@ -175,6 +146,5 @@
     </div>
   </div>
 </div>
-
 <!--  -->
 {% endblock %}

@@ -18,6 +18,7 @@ class Product(models.Model):
         ('Available','Available')
     )
     name = models.CharField(max_length=200, null=True)
+    vendor = models.CharField(max_length=200, null=True)
     product_tag = models.ManyToManyField(Tag)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     quantity = models.IntegerField(null=True)
