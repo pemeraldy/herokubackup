@@ -89,7 +89,11 @@
                 <h3 class="mb-0">Products</h3>
               </div>
               <div class="col text-right">
-                <a href="" class="btn btn-sm btn-primary">Add product</a>
+                <a
+                  href="{% url 'create-product' %}"
+                  class="btn btn-sm btn-primary"
+                  >Add product</a
+                >
               </div>
             </div>
           </div>
@@ -105,23 +109,23 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- {% for i in products %} -->
+                {% for i in products %}
                 <tr>
                   <th scope="row">
-                    Juice Box
+                    {{i.name}}
                   </th>
                   <td>
-                    75
+                    {{i.price}}
                   </td>
                   <td>
                     <i class="fas fa-arrow-up text-success mr-3"></i>
-                    Pending
+                    {{i.category}}
                   </td>
                   <td>
-                    8
+                    {{i.quantity}}
                   </td>
                 </tr>
-                <!-- {% endfor %} -->
+                {% endfor %}
               </tbody>
             </table>
           </div>
@@ -132,7 +136,7 @@
           <div class="card-header border-0">
             <div class="row align-items-center">
               <div class="col">
-                <h3 class="mb-0">Orders</h3>
+                <h3 class="mb-0">Sales</h3>
               </div>
               <div class="col text-right">
                 <a href="#!" class="btn btn-sm btn-primary">Add orders</a>
